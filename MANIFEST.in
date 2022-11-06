@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include zohocrm *.css
+recursive-include zohocrm *.csv
+recursive-include zohocrm *.html
+recursive-include zohocrm *.ico
+recursive-include zohocrm *.js
+recursive-include zohocrm *.json
+recursive-include zohocrm *.md
+recursive-include zohocrm *.png
+recursive-include zohocrm *.py
+recursive-include zohocrm *.svg
+recursive-include zohocrm *.txt
+recursive-exclude zohocrm *.pyc
