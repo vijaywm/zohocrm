@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "autoname": "format:{crm_entity_name}-{frappe_doctype}",
+ "creation": "2022-11-12 13:17:14.949553",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "crm_entity_name",
+  "frappe_doctype",
+  "sync_enabled",
+  "sync_frequency",
+  "column_break_5",
+  "last_sync_time",
+  "run_sync"
+ ],
+ "fields": [
+  {
+   "fieldname": "crm_entity_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CRM Entity Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "frappe_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Frappe DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sync_enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Sync Enabled"
+  },
+  {
+   "fieldname": "sync_frequency",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sync  Frequency In Minutes"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_sync_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Last Sync Time"
+  },
+  {
+   "fieldname": "run_sync",
+   "fieldtype": "Button",
+   "label": "Run Sync"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-12 20:24:06.917408",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "CRM Entity Sync",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

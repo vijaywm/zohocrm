@@ -1,0 +1,258 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-11-12 08:07:25.475450",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "last_name",
+  "full_name",
+  "account_name",
+  "email",
+  "phone",
+  "other_phone",
+  "mobile",
+  "assistant",
+  "column_break_9",
+  "lead_souce",
+  "vendor_name",
+  "title",
+  "department",
+  "column_break_18",
+  "date_of_birth",
+  "email_opt_out",
+  "skype_id",
+  "twitter",
+  "secondary_email",
+  "reporting_to",
+  "home_phone",
+  "fax",
+  "asst_phone",
+  "crm_entity_fields_section",
+  "crm_id",
+  "crm_owner",
+  "crm_created_by",
+  "crm_created_time",
+  "crm_modified_by",
+  "crm_modified_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "account_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Account Name",
+   "options": "Customer Profile"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "other_phone",
+   "fieldtype": "Data",
+   "label": "Other Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fieldname": "assistant",
+   "fieldtype": "Data",
+   "label": "Assistant"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Data",
+   "label": "CRM Created By"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Data",
+   "label": "CRM Created Time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Data",
+   "label": "CRM Modified By"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Data",
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "lead_souce",
+   "fieldtype": "Data",
+   "label": "Lead Souce"
+  },
+  {
+   "fieldname": "vendor_name",
+   "fieldtype": "Data",
+   "label": "Vendor Name"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date Of Birth"
+  },
+  {
+   "default": "0",
+   "fieldname": "email_opt_out",
+   "fieldtype": "Check",
+   "label": "Email Opt Out"
+  },
+  {
+   "fieldname": "skype_id",
+   "fieldtype": "Data",
+   "label": "Skype Id"
+  },
+  {
+   "fieldname": "twitter",
+   "fieldtype": "Data",
+   "label": "Twitter"
+  },
+  {
+   "fieldname": "secondary_email",
+   "fieldtype": "Data",
+   "label": "Secondary Email"
+  },
+  {
+   "fieldname": "reporting_to",
+   "fieldtype": "Link",
+   "label": "Reporting To",
+   "options": "CRM Contact"
+  },
+  {
+   "fieldname": "home_phone",
+   "fieldtype": "Data",
+   "label": "Home Phone"
+  },
+  {
+   "fieldname": "fax",
+   "fieldtype": "Data",
+   "label": "Fax"
+  },
+  {
+   "fieldname": "asst_phone",
+   "fieldtype": "Data",
+   "label": "Asst Phone"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "crm_entity_fields_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "CRM Entity Fields"
+  },
+  {
+   "fieldname": "crm_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Contact Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Data",
+   "label": "CRM Created By"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Data",
+   "label": "CRM Created Time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Data",
+   "label": "CRM Modified By"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Data",
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "crm_id",
+   "fieldtype": "Link",
+   "label": "CRM Id",
+   "options": "CRM Entity",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-13 14:35:59.329305",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "CRM Contact",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name"
+}

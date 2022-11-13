@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "autoname": "field:crm_id",
+ "creation": "2022-11-12 13:03:30.083314",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "crm_module",
+  "frappe_doctype",
+  "crm_id",
+  "column_break_6",
+  "crm_owner",
+  "crm_created_by",
+  "crm_created_time",
+  "crm_modified_by",
+  "crm_modified_time",
+  "section_break_9",
+  "data_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "crm_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "CRM Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Created By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Created time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Modified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "data_json",
+   "fieldtype": "Long Text",
+   "label": "Data Json"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "crm_module",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "CRM Module"
+  },
+  {
+   "fieldname": "crm_id",
+   "fieldtype": "Data",
+   "label": "CRM Id",
+   "unique": 1
+  },
+  {
+   "fieldname": "frappe_doctype",
+   "fieldtype": "Link",
+   "label": "Frappe DocType",
+   "options": "DocType"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-13 14:05:51.052012",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "CRM Entity",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

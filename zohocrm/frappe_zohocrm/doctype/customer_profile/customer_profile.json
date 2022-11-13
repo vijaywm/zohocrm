@@ -1,0 +1,248 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:account_name",
+ "creation": "2022-11-12 20:10:12.552011",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "account_name",
+  "email",
+  "account_site",
+  "industry",
+  "ownership",
+  "annual_revenue",
+  "column_break_7",
+  "phone",
+  "fax",
+  "website",
+  "ticker_symbol",
+  "employees",
+  "sic_code",
+  "rating",
+  "address_information_section",
+  "billing_street",
+  "billing_city",
+  "billing_state",
+  "billing_country",
+  "billing_code",
+  "column_break_22",
+  "shipping_street",
+  "shipping_city",
+  "shipping_state",
+  "shipping_country",
+  "shipping_code",
+  "crm_entity_fields_section",
+  "crm_id",
+  "crm_owner",
+  "crm_created_by",
+  "crm_created_time",
+  "crm_modified_by",
+  "crm_modified_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "account_name",
+   "fieldtype": "Data",
+   "label": "Account Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "account_site",
+   "fieldtype": "Data",
+   "label": "Account Site"
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Select",
+   "label": "Industry",
+   "options": "\nASP (Application Service Provider)\nLarge Enterprise"
+  },
+  {
+   "fieldname": "annual_revenue",
+   "fieldtype": "Currency",
+   "label": "Annual Revenue"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "label": "Rating"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "fax",
+   "fieldtype": "Data",
+   "label": "Fax"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "ticker_symbol",
+   "fieldtype": "Data",
+   "label": "Ticker Symbol"
+  },
+  {
+   "fieldname": "ownership",
+   "fieldtype": "Data",
+   "label": "Ownership"
+  },
+  {
+   "fieldname": "employees",
+   "fieldtype": "Data",
+   "label": "Employees"
+  },
+  {
+   "fieldname": "sic_code",
+   "fieldtype": "Data",
+   "label": "SIC Code"
+  },
+  {
+   "fieldname": "address_information_section",
+   "fieldtype": "Section Break",
+   "label": "Address Information"
+  },
+  {
+   "fieldname": "billing_street",
+   "fieldtype": "Data",
+   "label": "Billing Street"
+  },
+  {
+   "fieldname": "billing_city",
+   "fieldtype": "Data",
+   "label": "Billing City"
+  },
+  {
+   "fieldname": "billing_state",
+   "fieldtype": "Data",
+   "label": "Billing State"
+  },
+  {
+   "fieldname": "billing_country",
+   "fieldtype": "Data",
+   "label": "Billing Country"
+  },
+  {
+   "fieldname": "billing_code",
+   "fieldtype": "Data",
+   "label": "Billing Code"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_street",
+   "fieldtype": "Data",
+   "label": "Shipping Street"
+  },
+  {
+   "fieldname": "shipping_city",
+   "fieldtype": "Data",
+   "label": "Shipping City"
+  },
+  {
+   "fieldname": "shipping_state",
+   "fieldtype": "Data",
+   "label": "Shipping State"
+  },
+  {
+   "fieldname": "shipping_country",
+   "fieldtype": "Data",
+   "label": "Shipping Country"
+  },
+  {
+   "fieldname": "shipping_code",
+   "fieldtype": "Data",
+   "label": "Shipping Code"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "crm_entity_fields_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "CRM Entity Fields"
+  },
+  {
+   "fieldname": "crm_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "CRM Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Created By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Created time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Modified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "crm_id",
+   "fieldtype": "Data",
+   "label": "CRM Id"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-13 06:04:31.597124",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "Customer Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

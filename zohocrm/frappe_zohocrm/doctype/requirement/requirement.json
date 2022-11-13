@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2022-11-06 21:51:28.822918",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "deal_name",
+  "account_name",
+  "type",
+  "next_step",
+  "column_break_7",
+  "lead_source",
+  "amount",
+  "closing_date",
+  "stage",
+  "probability",
+  "expected_revenue",
+  "campaign_source",
+  "section_break_15",
+  "requirement_line_items",
+  "crm_entity_fields_section",
+  "crm_id",
+  "crm_owner",
+  "crm_created_by",
+  "crm_created_time",
+  "crm_modified_by",
+  "crm_modified_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "deal_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Deal Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "account_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Account Name",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nNew Business\nExisting Business"
+  },
+  {
+   "fieldname": "next_step",
+   "fieldtype": "Data",
+   "label": "Next Step"
+  },
+  {
+   "fieldname": "lead_source",
+   "fieldtype": "Select",
+   "label": "Lead Source",
+   "options": "\nAdvertisement\nCold Call\nEmployee Referral"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "closing_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Closing Date",
+   "reqd": 1
+  },
+  {
+   "default": "Qualification",
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stage",
+   "options": "Qualification\nNeeds Analysis\nValue Proposition\nIdentify Decision Makers\nProposal/Price Quote\nNegotiation/Review\nClosed Won\nClosed Lost\nClosed-Lost to Competition",
+   "reqd": 1
+  },
+  {
+   "fieldname": "probability",
+   "fieldtype": "Percent",
+   "label": "Probability"
+  },
+  {
+   "fieldname": "expected_revenue",
+   "fieldtype": "Currency",
+   "label": "Expected Revenue"
+  },
+  {
+   "fieldname": "campaign_source",
+   "fieldtype": "Data",
+   "label": "Campaign Source"
+  },
+  {
+   "fieldname": "requirement_line_items",
+   "fieldtype": "Table",
+   "label": "Requirement Line Items",
+   "options": "Requirement Line Item"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "crm_entity_fields_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "CRM Entity Fields"
+  },
+  {
+   "fieldname": "crm_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "CRM Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Created By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Created time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "CRM Modified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "crm_id",
+   "fieldtype": "Data",
+   "label": "CRM Id"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-13 09:47:09.972026",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "Requirement",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

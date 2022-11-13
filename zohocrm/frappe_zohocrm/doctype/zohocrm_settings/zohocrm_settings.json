@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-11-06 16:34:27.895422",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "client_id",
+  "client_secret",
+  "grant_token",
+  "user_email",
+  "resource_path",
+  "file_store_file_path",
+  "redirect_uri",
+  "data_center"
+ ],
+ "fields": [
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client Id"
+  },
+  {
+   "fieldname": "client_secret",
+   "fieldtype": "Data",
+   "label": "Client Secret"
+  },
+  {
+   "fieldname": "grant_token",
+   "fieldtype": "Data",
+   "label": "Grant Token"
+  },
+  {
+   "fieldname": "user_email",
+   "fieldtype": "Data",
+   "label": "User Email"
+  },
+  {
+   "fieldname": "resource_path",
+   "fieldtype": "Data",
+   "label": "Resource Path"
+  },
+  {
+   "fieldname": "file_store_file_path",
+   "fieldtype": "Data",
+   "label": "File Store File Path"
+  },
+  {
+   "fieldname": "redirect_uri",
+   "fieldtype": "Data",
+   "label": "Redirect Uri"
+  },
+  {
+   "fieldname": "data_center",
+   "fieldtype": "Data",
+   "label": "Data Center"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-11-06 17:06:55.825820",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "ZohoCRM Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
