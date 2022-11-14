@@ -13,8 +13,66 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Customer Profile",
+   "link_count": 0,
+   "link_to": "Customer Profile",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Requirement",
+   "link_count": 0,
+   "link_to": "Requirement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Requirement Item",
+   "link_count": 0,
+   "link_to": "Requirement Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ZohoCRM Settings",
+   "link_count": 0,
+   "link_to": "ZohoCRM Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "CRM Entity Sync",
+   "link_count": 0,
+   "link_to": "CRM Entity Sync",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Masters",
-   "link_count": 1,
+   "link_count": 5,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -61,34 +119,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Settings",
-   "link_count": 3,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "ZohoCRM Settings",
-   "link_count": 0,
-   "link_to": "ZohoCRM Settings",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "CRM Entity Sync",
-   "link_count": 0,
-   "link_to": "CRM Entity Sync",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "CRM Entity",
    "link_count": 0,
    "link_to": "CRM Entity",
@@ -97,7 +127,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-11-13 14:17:47.205140",
+ "modified": "2022-11-13 15:04:23.376542",
  "modified_by": "Administrator",
  "module": "Frappe ZohoCRM",
  "name": "Zoho CRM",
