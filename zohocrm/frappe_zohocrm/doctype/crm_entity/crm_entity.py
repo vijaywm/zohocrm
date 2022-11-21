@@ -1,11 +1,11 @@
 # Copyright (c) 2022, Biztech and contributors
 # For license information, please see license.txt
 
+import json
+
 import frappe
 from frappe.model.document import Document
-from frappe.utils import get_url_to_form
-
-import json
+from zohocrm.frappe_zohocrm.doctype.crm_entity_sync.crm_entity_sync import CRMEntitySync
 
 FIELDS_TO_SKIP = ["owner"]
 
@@ -15,13 +15,12 @@ class CRMEntity(Document):
         pass
 
     def on_update(self):
+        """Create/Update frappe doc connected to this CRM Record"""
         doc = frappe.db.get_value(self.frappe_doctype, filters={"crm_id": self.name})
         if doc:
             doc = frappe.get_doc(self.frappe_doctype, doc)
         else:
             doc = frappe.get_doc({"doctype": self.frappe_doctype})
-
-        if not doc.name:
             doc.update(
                 {
                     "crm_id": self.name,
@@ -82,3 +81,8 @@ class CRMEntity(Document):
                     self.crm_module, self.frappe_doctype, self.name
                 )
             )
+
+
+def write_to_crm(doc):
+    crm_instance = frappe.get_doc("CRM Entity Sync", "Accounts-Customer Profile")
+    crm_instance.write_to_crm(doc)

@@ -3,11 +3,13 @@
 
 # import frappe
 from frappe.model.document import Document
+from zohocrm.frappe_zohocrm.doctype.crm_entity.crm_entity import write_to_crm
 
 
 class CRMContact(Document):
     def sync_from_crm_record(self, crm_record):
         pass
-        # self.update({"account_name": crm_record.get("Account_Name")})
-
         self.save()
+
+    def on_update(self):
+        write_to_crm(self)

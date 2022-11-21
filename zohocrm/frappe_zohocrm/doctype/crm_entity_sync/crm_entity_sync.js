@@ -7,11 +7,15 @@ frappe.ui.form.on("CRM Entity Sync", {
   // }
 
   run_sync: function (frm) {
-    console.log("hit");
+    frappe.msgprint(
+      `Enqueuing syncing for ${frm.doc.crm_entity_name}. Please check after a few minutes.`
+    );
     frappe.call({
       method: "run_sync",
-      doc: cur_frm.doc,
-      callback: function (r) {},
+      doc: frm.doc,
+      callback: function (r) {
+        frappe.show_alert(`Syncing for ${frm.doc.crm_entity_name} finished.`);
+      },
     });
   },
 });

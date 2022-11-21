@@ -9,9 +9,12 @@ from zcrmsdk.src.com.zoho.crm.api.record import Record
 from zcrmsdk.src.com.zoho.crm.api.util import Choice
 import json
 
+from zohocrm.frappe_zohocrm.doctype.crm_entity.crm_entity import write_to_crm
+
 
 class Requirement(Document):
     def autoname(self):
+        self.crm_created_time = frappe.utils.get_datetime(self.crm_created_time)
         self.name = make_autoname(
             "RQ-%s-.#####" % (self.crm_created_time.strftime("%Y%m"))
         )
@@ -28,3 +31,17 @@ class Requirement(Document):
         )
 
         self.save()
+
+    def on_update(self):
+        write_to_crm(self)
+
+        # # delink Requirement Item if not in child table
+        # for d in frappe.db.get_all("Requirement Item", {"deal_name": self.name}):
+        #     if [x for x in self.items if x.requirement_item == d.name]:
+        #         d.update("deal_name", None)
+
+        # # link all Requirement Items in child table to this deal
+        # for d in self.items:
+        #     frappe.db.set_value(
+        #         "Requirement Item", d.requirement_item, "deal_name", self.name
+        #     )

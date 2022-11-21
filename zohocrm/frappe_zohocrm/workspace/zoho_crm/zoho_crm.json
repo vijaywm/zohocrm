@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Zoho CRM</span>\",\"col\":9}},{\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Zoho CRM</span>\",\"col\":10}},{\"type\":\"card\",\"data\":{\"card_name\":\"Modules\",\"col\":3}},{\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":3}}]",
  "creation": "2022-11-13 13:23:17.385317",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -43,7 +43,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Settings",
+   "label": "Setup",
    "link_count": 2,
    "onboard": 0,
    "type": "Card Break"
@@ -71,7 +71,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Masters",
+   "label": "Modules",
    "link_count": 5,
    "onboard": 0,
    "type": "Card Break"
@@ -127,7 +127,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-11-13 15:04:23.376542",
+ "modified": "2022-11-21 17:22:26.520526",
  "modified_by": "Administrator",
  "module": "Frappe ZohoCRM",
  "name": "Zoho CRM",

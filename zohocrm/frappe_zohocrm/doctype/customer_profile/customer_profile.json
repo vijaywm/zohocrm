@@ -18,9 +18,9 @@
   "fax",
   "website",
   "ticker_symbol",
-  "employees",
   "sic_code",
   "rating",
+  "employees",
   "address_information_section",
   "billing_street",
   "billing_city",
@@ -39,7 +39,8 @@
   "crm_created_by",
   "crm_created_time",
   "crm_modified_by",
-  "crm_modified_time"
+  "crm_modified_time",
+  "my_name"
  ],
  "fields": [
   {
@@ -101,17 +102,13 @@
   },
   {
    "fieldname": "ownership",
-   "fieldtype": "Data",
-   "label": "Ownership"
-  },
-  {
-   "fieldname": "employees",
-   "fieldtype": "Data",
-   "label": "Employees"
+   "fieldtype": "Select",
+   "label": "Ownership",
+   "options": "\nOther\nPrivate\nPublic\nSubsidary"
   },
   {
    "fieldname": "sic_code",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "SIC Code"
   },
   {
@@ -176,7 +173,7 @@
   {
    "collapsible": 1,
    "fieldname": "crm_entity_fields_section",
-   "fieldtype": "Section Break",
+   "fieldtype": "Tab Break",
    "hide_border": 1,
    "label": "CRM Entity Fields"
   },
@@ -218,11 +215,21 @@
    "fieldname": "crm_id",
    "fieldtype": "Data",
    "label": "CRM Id"
+  },
+  {
+   "fieldname": "my_name",
+   "fieldtype": "Small Text",
+   "label": "My Name"
+  },
+  {
+   "fieldname": "employees",
+   "fieldtype": "Int",
+   "label": "Employees"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-11-13 06:04:31.597124",
+ "modified": "2022-11-20 21:12:25.259777",
  "modified_by": "Administrator",
  "module": "Frappe ZohoCRM",
  "name": "Customer Profile",

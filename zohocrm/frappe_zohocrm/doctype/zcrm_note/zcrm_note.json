@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-11-14 13:10:14.081035",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "note_title",
+  "note_content",
+  "parent_id",
+  "parent_type",
+  "crm_entity_fields_section",
+  "crm_id",
+  "crm_owner",
+  "crm_created_by",
+  "crm_created_time",
+  "crm_modified_by",
+  "crm_modified_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "note_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Note Title"
+  },
+  {
+   "fieldname": "note_content",
+   "fieldtype": "Data",
+   "label": "Note Content"
+  },
+  {
+   "fieldname": "parent_id",
+   "fieldtype": "Data",
+   "label": "Parent Id"
+  },
+  {
+   "fieldname": "parent_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parent Type"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "crm_entity_fields_section",
+   "fieldtype": "Section Break",
+   "hide_border": 1,
+   "label": "CRM Entity Fields"
+  },
+  {
+   "fieldname": "crm_owner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Note Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "crm_created_by",
+   "fieldtype": "Data",
+   "label": "CRM Created By"
+  },
+  {
+   "fieldname": "crm_created_time",
+   "fieldtype": "Data",
+   "label": "CRM Created Time"
+  },
+  {
+   "fieldname": "crm_modified_by",
+   "fieldtype": "Data",
+   "label": "CRM Modified By"
+  },
+  {
+   "fieldname": "crm_modified_time",
+   "fieldtype": "Data",
+   "label": "CRM Modified Time"
+  },
+  {
+   "fieldname": "crm_id",
+   "fieldtype": "Link",
+   "label": "CRM Id",
+   "options": "CRM Entity",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-11-14 13:58:23.403982",
+ "modified_by": "Administrator",
+ "module": "Frappe ZohoCRM",
+ "name": "ZCRM Note",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

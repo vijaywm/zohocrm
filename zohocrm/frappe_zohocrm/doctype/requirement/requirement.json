@@ -42,7 +42,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Account Name",
-   "options": "Customer",
+   "options": "Customer Profile",
    "reqd": 1
   },
   {
@@ -161,7 +161,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-11-13 09:47:09.972026",
+ "modified": "2022-11-14 13:36:40.024248",
  "modified_by": "Administrator",
  "module": "Frappe ZohoCRM",
  "name": "Requirement",

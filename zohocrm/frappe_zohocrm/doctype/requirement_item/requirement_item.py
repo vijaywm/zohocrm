@@ -5,6 +5,7 @@ import frappe
 from frappe.model.document import Document
 import json
 from zohocrm.frappe_zohocrm.doctype.crm_entity_sync.crm_entity_sync import get_by_id
+from zohocrm.frappe_zohocrm.doctype.crm_entity.crm_entity import write_to_crm
 
 
 class RequirementItem(Document):
@@ -41,3 +42,6 @@ class RequirementItem(Document):
                     }
                 )
             requirement.save()
+
+    def on_update(self):
+        write_to_crm(self)
