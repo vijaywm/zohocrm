@@ -7,7 +7,7 @@ import frappe
 from frappe.model.document import Document
 from zohocrm.frappe_zohocrm.doctype.crm_entity_sync.crm_entity_sync import CRMEntitySync
 
-FIELDS_TO_SKIP = ["owner"]
+FIELDS_TO_SKIP = ["owner", "name"]
 
 
 class CRMEntity(Document):
@@ -24,8 +24,6 @@ class CRMEntity(Document):
             doc.update(
                 {
                     "crm_id": self.name,
-                    "crm_created_time": self.crm_created_time,
-                    "crm_created_by": self.crm_created_by,
                 }
             )
 
@@ -33,6 +31,8 @@ class CRMEntity(Document):
         doc.update(
             {
                 "crm_owner": self.crm_owner,
+                "crm_created_time": self.crm_created_time,
+                "crm_created_by": self.crm_created_by,
                 "crm_modified_time": self.crm_modified_time,
                 "crm_modified_by": self.crm_modified_by,
             }
@@ -81,8 +81,3 @@ class CRMEntity(Document):
                     self.crm_module, self.frappe_doctype, self.name
                 )
             )
-
-
-def write_to_crm(doc):
-    crm_instance = frappe.get_doc("CRM Entity Sync", "Accounts-Customer Profile")
-    crm_instance.write_to_crm(doc)

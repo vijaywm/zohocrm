@@ -23,6 +23,8 @@ from zcrmsdk.src.com.zoho.crm.api.record.success_response import SuccessResponse
 from zcrmsdk.src.com.zoho.crm.api.record.action_wrapper import ActionWrapper
 from zcrmsdk.src.com.zoho.crm.api.util import Choice
 from zcrmsdk.src.com.zoho.crm.api.record import *
+from zcrmsdk.src.com.zoho.crm.api.notes import *
+from zcrmsdk.src.com.zoho.crm.api.notes.note import Note as CRM_Note
 
 
 def initialize_crm():
@@ -107,8 +109,46 @@ def get_by_id(doctype, crm_id):
         return frappe.get_doc(doctype, name)
 
 
-def get_crm_key(fieldname):
-    return frappe.unscrub(fieldname).replace(" ", "_")
+def get_crm_key(fieldname, api_field_name):
+    return api_field_name.get(fieldname) or frappe.unscrub(fieldname).replace(" ", "_")
+
+
+def set_record_values(record, doc, api_field_name):
+    if doc.crm_id:
+        record.set_id(int(cstr(doc.crm_id)))
+
+    # data fields
+    for field in doc.meta.get_data_fields():
+        if field.fieldname in CRM_STANDARD_FIELDS or not doc.get(field.fieldname):
+            continue
+
+        key = get_crm_key(field.fieldname, api_field_name)
+        record.add_key_value(key, doc.get(field.fieldname) or "")
+
+    # int fields
+    for field in doc.meta.get("fields", {"fieldtype": "Int"}):
+        if field.fieldname in CRM_STANDARD_FIELDS or not doc.get(field.fieldname):
+            continue
+
+        key = get_crm_key(field.fieldname, api_field_name)
+        record.add_key_value(key, doc.get(field.fieldname))
+
+    # float fields
+    for field in doc.meta.get("fields", {"fieldtype": ["in", ["Currency", "Float"]]}):
+        if field.fieldname in CRM_STANDARD_FIELDS or not doc.get(field.fieldname):
+            continue
+
+        key = get_crm_key(field.fieldname, api_field_name)
+        record.add_key_value(key, flt(doc.get(field.fieldname)))
+
+    # select fields
+    for field in doc.meta.get_select_fields():
+        if field.fieldname in CRM_STANDARD_FIELDS or not doc.get(field.fieldname):
+            continue
+        key = get_crm_key(field.fieldname, api_field_name)
+        # record.add_key_value(key, Choice(doc.get(field.fieldname)))
+
+    # ToDO: Link fields
 
 
 class CRMEntitySync(Document):
@@ -128,10 +168,12 @@ class CRMEntitySync(Document):
 
     def _sync(self, last_modified=None, entity_id=None):
         module_name = self.crm_entity_name
-        print("syncing %s since %s" % (module_name, last_modified))
+        print(
+            "syncing %s since %s, entity_id: %s"
+            % (module_name, last_modified, entity_id)
+        )
 
         if entity_id:
-            print("syncing: ", entity_id, module_name)
             self.param_instance.add(GetRecordsParam.ids, cstr(entity_id))
 
         if last_modified:
@@ -147,7 +189,6 @@ class CRMEntitySync(Document):
             if isinstance(response_object, object):
                 try:
                     for d in response_object.get_data():
-                        print(d)
                         self.sync_doc(d)
 
                     if not entity_id:
@@ -165,8 +206,6 @@ class CRMEntitySync(Document):
                     "doctype": "CRM Entity",
                     "crm_id": id,
                     "crm_module": self.crm_entity_name,
-                    "crm_created_time": get_created_time(record),
-                    "crm_created_by": get_created_by(record),
                     "frappe_doctype": self.frappe_doctype,
                 }
             )
@@ -174,6 +213,8 @@ class CRMEntitySync(Document):
         doc.update(
             {
                 "crm_owner": get_owner(record),
+                "crm_created_time": get_created_time(record),
+                "crm_created_by": get_created_by(record),
                 "crm_modified_time": get_modified_time(record),
                 "crm_modified_by": get_modified_by(record),
             }
@@ -184,39 +225,19 @@ class CRMEntitySync(Document):
         )
         doc.save()
 
-    def write_to_crm(self, doc):
+    def write_to_crm(self, doc, api_field_name=None):
+        if doc.flags.in_sync_from_crm or not doc.crm_id:
+            return
+
         # https://www.zoho.com/crm/developer/docs/python-sdk/v2/record-samples.html?src=update_records
         record = Record()
-        record.set_id(int(doc.crm_id))
-
-        for field in doc.meta.get_data_fields():
-            if field.fieldname in CRM_STANDARD_FIELDS:
-                continue
-            key = get_crm_key(field.fieldname)
-            record.add_key_value(key, doc.get(field.fieldname) or "")
-
-        for field in doc.meta.get_select_fields():
-            if field.fieldname in CRM_STANDARD_FIELDS:
-                continue
-            key = get_crm_key(field.fieldname)
-            # record.add_key_value(key, Choice(doc.get(field.fieldname)))
-
-        for field in doc.meta.get("fields", {"fieldtype": "Int"}):
-            key = get_crm_key(field.fieldname)
-            record.add_key_value(key, doc.get(field.fieldname))
-            print(key, doc.get(field.fieldname))
-
-        for field in doc.meta.get(
-            "fields", {"fieldtype": ["in", ["Currency", "Float"]]}
-        ):
-            key = get_crm_key(field.fieldname)
-            record.add_key_value(key, flt(doc.get(field.fieldname)))
+        set_record_values(record, doc, api_field_name)
 
         request = BodyWrapper()
         request.set_data([record])
 
         response = self.record_operations.update_records(
-            "Accounts", request, self.header_instance
+            self.crm_entity_name, request, self.header_instance
         )
         if response is not None:
             response_object = response.get_object()
@@ -227,6 +248,80 @@ class CRMEntitySync(Document):
                             "updated %s: %s in crm" % (doc.doctype, doc.name), alert=1
                         )
                         print(action_response.get_details())
-                        return
+                    else:
+                        print("Doc could not be synced")
+                        frappe.log_error(action_response.get_message().get_value())
 
-        print("Doc could not be synced")
+    def create_in_crm(self, doc, api_field_name=None):
+        record = Record()
+        set_record_values(record, doc, api_field_name)
+
+        request = BodyWrapper()
+        request.set_data([record])
+
+        response = self.record_operations.create_records(
+            self.crm_entity_name, request, self.header_instance
+        )
+        if response is not None:
+            response_object = response.get_object()
+            if isinstance(response_object, ActionWrapper):
+                for action_response in response_object.get_data():
+                    if isinstance(action_response, SuccessResponse):
+                        try:
+                            details = action_response.get_details()
+                            # sync details from crm
+                            doc.db_set("crm_id", details.get("id"))
+                            self._sync(entity_id=details.get("id"))
+                        except Exception:
+                            frappe.log_error()
+                        frappe.msgprint(
+                            "created %s: %s in crm" % (doc.doctype, doc.name), alert=1
+                        )
+                        print(action_response.get_details())
+                    else:
+                        print("Doc could not be synced")
+                        frappe.log_error(action_response.get_message().get_value())
+
+    def add_note(self, comment):
+        # https://www.zoho.com/crm/developer/docs/python-sdk/v2/notes-samples.html?src=create_notes
+        # https://help.zoho.com/portal/en/community/topic/workflow-rules-email-notes-alerts
+
+        notes_operations = NotesOperations()
+        request = BodyWrapper()
+        note = CRM_Note()
+
+        from bs4 import BeautifulSoup as bs
+
+        content = bs(comment.content).get_text()
+
+        note.set_note_content(content)
+        note.set_note_title("@{}".format(frappe.session.user))
+
+        parent = Record()
+        parent.set_id(
+            int(
+                frappe.db.get_value(
+                    comment.reference_doctype, comment.reference_name, "crm_id"
+                )
+            )
+        )
+        note.set_parent_id(parent)
+        note.set_se_module("Requirement_Items")
+
+        # Set the list to notes in BodyWrapper instance
+        request.set_data([note])
+
+        # Call create_notes method that takes BodyWrapper instance as parameter
+        response = notes_operations.create_notes(request)
+        if response is not None:
+            response_object = response.get_object()
+            if isinstance(response_object, ActionWrapper):
+                for action_response in response_object.get_data():
+                    if isinstance(action_response, SuccessResponse):
+                        try:
+                            details = action_response.get_details()
+                            frappe.msgprint(details)
+                        except Exception:
+                            frappe.log_error()
+                    else:
+                        frappe.log_error(action_response.get_message().get_value())

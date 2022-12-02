@@ -9,7 +9,7 @@ from zcrmsdk.src.com.zoho.crm.api.record import Record
 from zcrmsdk.src.com.zoho.crm.api.util import Choice
 import json
 
-from zohocrm.frappe_zohocrm.doctype.crm_entity.crm_entity import write_to_crm
+API_FIELD_NAME = {}
 
 
 class Requirement(Document):
@@ -18,8 +18,10 @@ class Requirement(Document):
         self.name = make_autoname(
             "RQ-%s-.#####" % (self.crm_created_time.strftime("%Y%m"))
         )
+        self.crm_instance_name = "Deals-Requirement"
 
     def sync_from_crm_record(self, crm_record):
+        self.flags.in_sync_from_crm = True
         self.update(
             {
                 "deal_name": crm_record.get("Deal_Name"),
@@ -33,7 +35,9 @@ class Requirement(Document):
         self.save()
 
     def on_update(self):
-        write_to_crm(self)
+        frappe.get_doc("CRM Entity Sync", self.crm_instance_name).write_to_crm(
+            self, API_FIELD_NAME
+        )
 
         # # delink Requirement Item if not in child table
         # for d in frappe.db.get_all("Requirement Item", {"deal_name": self.name}):

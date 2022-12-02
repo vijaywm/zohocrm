@@ -5,12 +5,15 @@ import frappe
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
 import json
-from zohocrm.frappe_zohocrm.doctype.crm_entity.crm_entity import write_to_crm
+
+
+API_FIELD_NAME = {}
 
 
 class CustomerProfile(Document):
-    def validate(self):
-        pass
+    def __init__(self, *args, **kwargs):
+        super(CustomerProfile, self).__init__(*args, **kwargs)
+        self.crm_instance_name = "Accounts-Customer Profile"
 
     def sync_from_crm_record(self, crm_record):
         self.flags.in_sync_from_crm = True
@@ -18,5 +21,13 @@ class CustomerProfile(Document):
         self.save()
 
     def on_update(self):
-        if not self.flags.in_sync_from_crm:
-            write_to_crm(self)
+        frappe.get_doc("CRM Entity Sync", self.crm_instance_name).write_to_crm(
+            self, API_FIELD_NAME
+        )
+
+    # def after_insert(self):
+    #     """create new record in crm"""
+    #     if not self.crm_id:
+    #         frappe.get_doc("CRM Entity Sync", self.crm_instance_name).create_in_crm(
+    #             self, API_FIELD_NAME
+    #         )

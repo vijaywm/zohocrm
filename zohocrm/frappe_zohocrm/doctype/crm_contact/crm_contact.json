@@ -211,8 +211,7 @@
    "fieldtype": "Link",
    "label": "CRM Id",
    "options": "CRM Entity",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "last_name",
@@ -232,7 +231,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-11-13 14:35:59.329305",
+ "modified": "2022-12-02 10:44:50.570702",
  "modified_by": "Administrator",
  "module": "Frappe ZohoCRM",
  "name": "CRM Contact",

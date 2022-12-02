@@ -8,11 +8,10 @@ import frappe
 def update_record(**args):
     print(args)
     if args.get("module_name") and args.get("id"):
-        sync = frappe.db.get_value(
+        frappe.set_user("Administrator")
+        for sync in frappe.db.get_all(
             "CRM Entity Sync", filters={"crm_entity_name": args.get("module_name")}
-        )
-        if sync:
-            frappe.set_user("Administrator")
-            sync = frappe.get_doc("CRM Entity Sync", sync).run_sync(
+        ):
+            frappe.get_doc("CRM Entity Sync", sync.name).run_sync(
                 entity_id=args.get("id")
             )
