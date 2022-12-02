@@ -26,6 +26,8 @@ from zcrmsdk.src.com.zoho.crm.api.record import *
 from zcrmsdk.src.com.zoho.crm.api.notes import (
     NotesOperations,
     BodyWrapper as NotesBodyWrapper,
+    ActionWrapper as NotesActionWrapper,
+    SuccessResponse as NotesSuccessResponse,
 )
 from zcrmsdk.src.com.zoho.crm.api.notes.note import Note as CRM_Note
 
@@ -296,7 +298,7 @@ class CRMEntitySync(Document):
 
         from bs4 import BeautifulSoup as bs
 
-        content = bs(comment.content).get_text()
+        content = bs(comment.content, "xml").get_text()
 
         note.set_note_content(content)
         note.set_note_title("@{}".format(frappe.session.user))
@@ -310,7 +312,7 @@ class CRMEntitySync(Document):
             )
         )
         note.set_parent_id(parent)
-        note.set_se_module("Requirement_Items")
+        note.set_se_module(self.crm_entity_name)
 
         # Set the list to notes in BodyWrapper instance
         request.set_data([note])
@@ -319,9 +321,9 @@ class CRMEntitySync(Document):
         response = notes_operations.create_notes(request)
         if response is not None:
             response_object = response.get_object()
-            if isinstance(response_object, ActionWrapper):
+            if isinstance(response_object, NotesActionWrapper):
                 for action_response in response_object.get_data():
-                    if isinstance(action_response, SuccessResponse):
+                    if isinstance(action_response, NotesSuccessResponse):
                         try:
                             details = action_response.get_details()
                             frappe.msgprint(details)
