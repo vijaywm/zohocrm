@@ -13,12 +13,15 @@ API_FIELD_NAME = {}
 
 
 class Requirement(Document):
+    def __init__(self, *args, **kwargs):
+        super(Requirement, self).__init__(*args, **kwargs)
+        self.crm_instance_name = "Deals-Requirement"
+
     def autoname(self):
         self.crm_created_time = frappe.utils.get_datetime(self.crm_created_time)
         self.name = make_autoname(
             "RQ-%s-.#####" % (self.crm_created_time.strftime("%Y%m"))
         )
-        self.crm_instance_name = "Deals-Requirement"
 
     def sync_from_crm_record(self, crm_record):
         self.flags.in_sync_from_crm = True

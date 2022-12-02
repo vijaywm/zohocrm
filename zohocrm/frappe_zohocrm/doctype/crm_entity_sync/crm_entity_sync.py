@@ -23,7 +23,10 @@ from zcrmsdk.src.com.zoho.crm.api.record.success_response import SuccessResponse
 from zcrmsdk.src.com.zoho.crm.api.record.action_wrapper import ActionWrapper
 from zcrmsdk.src.com.zoho.crm.api.util import Choice
 from zcrmsdk.src.com.zoho.crm.api.record import *
-from zcrmsdk.src.com.zoho.crm.api.notes import *
+from zcrmsdk.src.com.zoho.crm.api.notes import (
+    NotesOperations,
+    BodyWrapper as NotesBodyWrapper,
+)
 from zcrmsdk.src.com.zoho.crm.api.notes.note import Note as CRM_Note
 
 
@@ -247,9 +250,9 @@ class CRMEntitySync(Document):
                         frappe.msgprint(
                             "updated %s: %s in crm" % (doc.doctype, doc.name), alert=1
                         )
-                        print(action_response.get_details())
                     else:
                         print("Doc could not be synced")
+                        print(action_response.get_details())
                         frappe.log_error(action_response.get_message().get_value())
 
     def create_in_crm(self, doc, api_field_name=None):
@@ -272,12 +275,13 @@ class CRMEntitySync(Document):
                             # sync details from crm
                             doc.db_set("crm_id", details.get("id"))
                             self._sync(entity_id=details.get("id"))
-                        except Exception:
+                            frappe.msgprint(
+                                "created %s: %s in crm" % (doc.doctype, doc.name),
+                                alert=1,
+                            )
+                        except Exception as e:
+                            print(e, action_response.get_details())
                             frappe.log_error()
-                        frappe.msgprint(
-                            "created %s: %s in crm" % (doc.doctype, doc.name), alert=1
-                        )
-                        print(action_response.get_details())
                     else:
                         print("Doc could not be synced")
                         frappe.log_error(action_response.get_message().get_value())
@@ -287,7 +291,7 @@ class CRMEntitySync(Document):
         # https://help.zoho.com/portal/en/community/topic/workflow-rules-email-notes-alerts
 
         notes_operations = NotesOperations()
-        request = BodyWrapper()
+        request = NotesBodyWrapper()
         note = CRM_Note()
 
         from bs4 import BeautifulSoup as bs

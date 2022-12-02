@@ -5,7 +5,7 @@ import frappe
 
 
 def after_insert_comment(doc, method):
-    print(doc.as_dict(), method)
+    # print(doc.as_dict(), method)
     if doc.comment_type == "Deleted":
         return
 

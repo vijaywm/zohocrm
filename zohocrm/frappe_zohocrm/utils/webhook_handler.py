@@ -6,7 +6,7 @@ import frappe
 
 @frappe.whitelist(allow_guest=True)
 def update_record(**args):
-    print(args)
+    # print(args)
     if args.get("module_name") and args.get("id"):
         frappe.set_user("Administrator")
         for sync in frappe.db.get_all(
